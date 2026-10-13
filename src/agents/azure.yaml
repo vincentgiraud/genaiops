@@ -8,4 +8,8 @@ services:
   agent:
     project: .
     language: python
-    host: foundry
+    host: azure.ai.agent
+
+requiredVersions:
+  extensions:
+    "azure.ai.agents": ">=0.1.0-preview"
