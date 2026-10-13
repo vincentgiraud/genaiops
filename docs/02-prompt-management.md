@@ -96,7 +96,7 @@ Now you'll use the Azure Developer CLI to deploy all required Azure resources.
 
     The command deploys the infrastructure from the `infra/` folder, creating:
     - **Resource Group** - Container for all resources
-    - **Foundry (AI Services)** - The hub with access to models like GPT-5.1
+    - **Foundry (AI Services)** - The hub with access to models like gpt-6.1-sol
     - **Foundry Project** - Your workspace for creating and managing agents
     - **Log Analytics Workspace** - Collects logs and telemetry data
     - **Application Insights** - Monitors agent performance and usage
@@ -125,7 +125,7 @@ Now you'll use the Azure Developer CLI to deploy all required Azure resources.
     MODEL_NAME="<model_name>"
     ```
 
-    > **Note**: Set `MODEL_NAME` to the deployed model you want to use in your environment. For example, if you kept the template default and it is available in your region, you can use `gpt-5.1`.
+    > **Note**: Set `MODEL_NAME` to the deployed model you want to use in your environment. For example, if you kept the template default and it is available in your region, you can use `gpt-6.1-sol`.
 
 ### Install Python dependencies
 

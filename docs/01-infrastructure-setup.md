@@ -95,12 +95,12 @@ You'll use the Azure Developer CLI to deploy all required Azure resources using 
 
     **Resources created:**
     - **Resource Group** - Container for all resources (e.g., `rg-trail-gd-dev-trailguide-pr`)
-    - **Foundry (AI Services)** - The hub with access to Global Standard models like GPT-5.1 (the exact model can vary by region and availability)
+    - **Foundry (AI Services)** - The hub with access to Global Standard models like gpt-6.1-sol (the exact model can vary by region and availability)
     - **Foundry Project** - Your workspace for creating and managing agents
     - **Log Analytics Workspace** - Collects logs and telemetry data
     - **Application Insights** - Monitors agent performance and usage
 
-    > **Note**: The core components you'll use are the Foundry hub and Project. The default template currently suggests GPT-5.1, but model availability varies by region and over time.
+    > **Note**: The core components you'll use are the Foundry hub and Project. The default template currently suggests gpt-6.1-sol, but model availability varies by region and over time.
 
 1. Create a `.env` file with the environment variables:
 
@@ -160,7 +160,7 @@ Add the required agent configuration to your environment variables.
     MODEL_NAME="<model_name>"
     ```
 
-    > **Note**: Set `MODEL_NAME` to the deployed chat model you want to use in your environment. For example, if you kept the template default and it is available in your region, you can use `gpt-5.1`.
+    > **Note**: Set `MODEL_NAME` to the deployed chat model you want to use in your environment. For example, if you kept the template default and it is available in your region, you can use `gpt-6.1-sol`.
 
 1. Save the file.
 

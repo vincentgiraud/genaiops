@@ -71,13 +71,13 @@ After creating your repository, clone it to your local machine.
 
 ### Check model availability in your region
 
-The template deploys `gpt-5-mini` on the `GlobalStandard` SKU. Model and SKU availability varies by region, so confirm your choice exists before provisioning.
+The template deploys `gpt-6.1-sol-mini` on the `GlobalStandard` SKU. Model and SKU availability varies by region, so confirm your choice exists before provisioning.
 
 1. Sign in and list the models offered in your region:
 
     ```powershell
     az login
-    az cognitiveservices model list -l swedencentral --query "[?contains(model.name,'gpt-5')].{name:model.name, ver:model.version, sku:model.skus[0].name}" -o table
+    az cognitiveservices model list -l swedencentral --query "[?contains(model.name,'gpt-6.1-sol')].{name:model.name, ver:model.version, sku:model.skus[0].name}" -o table
     ```
 
     Note the `sku` column. A model shown only as `Standard` cannot be deployed as `GlobalStandard`.
@@ -142,7 +142,7 @@ Now you'll use the Azure Developer CLI to deploy all required Azure resources.
 
     The command deploys the infrastructure from the `infra\` folder, creating:
     - **Resource Group** - Container for all resources
-    - **Foundry (AI Services)** - The hub with access to models such as GPT-5.1
+    - **Foundry (AI Services)** - The hub with access to models such as gpt-6.1-sol
     - **Foundry Project** - Your workspace for creating and managing prompts
     - **Log Analytics Workspace** - Collects logs and telemetry data
     - **Application Insights** - Monitors performance and usage
@@ -260,7 +260,7 @@ You'll use Microsoft Foundry's built-in quality evaluators:
 | **Relevance** | Response addresses query | 1-5 score | Validate query-response alignment |
 | **Groundedness** | Factual accuracy | 1-5 score | Ensure reliable information |
 
-All evaluators use the configured judge model as an LLM judge and return. The examples below use GPT-5.1:
+All evaluators use the configured judge model as an LLM judge and return. The examples below use gpt-6.1-sol:
 
 - **Score**: 1-5 scale (5 = excellent)
 - **Label**: Pass/Fail based on threshold (default: 3)
@@ -330,7 +330,7 @@ Execute the complete evaluation pipeline with one command.
 
     Configuration:
       Project: https://<account>.services.ai.azure.com/api/projects/<project>
-      Model: gpt-5.1
+      Model: gpt-6.1-sol
       Dataset: trail-guide-evaluation-dataset (v1)
 
     ================================================================================
@@ -348,7 +348,7 @@ Execute the complete evaluation pipeline with one command.
     ================================================================================
 
     Configuration:
-      Judge Model: gpt-5.1
+      Judge Model: gpt-6.1-sol
       Evaluators: Intent Resolution, Relevance, Groundedness
 
     Creating evaluation...
@@ -591,7 +591,7 @@ The evaluation script integrates with GitHub Actions to automatically run evalua
     | `AZURE_SUBSCRIPTION_ID`        | `AZURE_SUBSCRIPTION_ID` in your `.env` file             |
     | `AZURE_AI_PROJECT_ENDPOINT`    | `AZURE_AI_PROJECT_ENDPOINT` in your `.env` file         |
 
-    Add a repository variable (not secret) for the model name. The workflow falls back to `gpt-5.1`, so this is required whenever you deployed a different model:
+    Add a repository variable (not secret) for the model name. The workflow falls back to `gpt-6.1-sol`, so this is required whenever you deployed a different model:
     - **Settings → Secrets and variables → Actions → Variables → New repository variable**
     - Name: `MODEL_NAME`, Value: the model deployment you created during provisioning
 
@@ -679,7 +679,7 @@ Document your findings and create an analysis report.
     
     Evaluated: 89 test cases  
     Time: ~10 minutes  
-    Scoring: GPT-5.1 as an LLM judge (1-5 scale)
+    Scoring: gpt-6.1-sol as an LLM judge (1-5 scale)
     
     | Evaluator | Average Score | Pass Rate | Assessment |
     |-----------|---------------|-----------|------------|
@@ -770,7 +770,7 @@ Create `experiments/automated/threshold_analysis.md` with:
 
 ### Investigation goal
 
-Compare evaluation results between GPT-5.1 and another lower-cost regional model, if one is available in your environment, to understand quality-cost tradeoffs for your specific use case.
+Compare evaluation results between gpt-6.1-sol and another lower-cost regional model, if one is available in your environment, to understand quality-cost tradeoffs for your specific use case.
 
 ### Run evaluation on responses from an alternate regional model
 

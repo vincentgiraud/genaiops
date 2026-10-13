@@ -96,7 +96,7 @@ Now you'll use the Azure Developer CLI to deploy all required Azure resources.
 
     The command deploys the infrastructure from the `infra\` folder, creating:
     - **Resource Group** - Container for all resources
-    - **Foundry (AI Services)** - The hub with access to models like GPT-5.1
+    - **Foundry (AI Services)** - The hub with access to models like gpt-6.1-sol
     - **Foundry Project** - Your workspace for creating and managing prompts
     - **Log Analytics Workspace** - Collects logs and telemetry data
     - **Application Insights** - Monitors performance and usage
@@ -149,7 +149,7 @@ With your Azure resources deployed, install the required Python packages.
     MODEL_NAME="<model_name>"
     ```
 
-    > **Note**: Set `MODEL_NAME` to the deployed baseline model you want to use in your environment. For example, if you kept the template default and it is available in your region, you can use `gpt-5.1`.
+    > **Note**: Set `MODEL_NAME` to the deployed baseline model you want to use in your environment. For example, if you kept the template default and it is available in your region, you can use `gpt-6.1-sol`.
 
 ## Understand the experimental workflow
 
@@ -228,7 +228,7 @@ The baseline provides:
     The `model=` setting should be:
 
     ```python
-    model=os.getenv("MODEL_NAME", "gpt-5.1"),
+    model=os.getenv("MODEL_NAME", "gpt-6.1-sol"),
     ```
 
 1. If you changed the file in the previous step, save it and commit the baseline configuration on `main`:
@@ -499,7 +499,7 @@ Determine if an alternate lower-cost model available in your region can maintain
     
     ```python
     # Change from:
-    model=os.getenv("MODEL_NAME", "gpt-5.1"),
+    model=os.getenv("MODEL_NAME", "gpt-6.1-sol"),
     
     # To:
     model="<available-lower-cost-model>",
@@ -530,7 +530,7 @@ Determine if an alternate lower-cost model available in your region can maintain
 
     ```csv
     test_prompt,agent_response_excerpt,intent_resolution,relevance,groundedness,depth,comments
-    day-hike-gear,"For summer day hikes on moderate terrain...",4,4,4,3,Good coverage but less detailed than GPT-5.1 baseline
+    day-hike-gear,"For summer day hikes on moderate terrain...",4,4,4,3,Good coverage but less detailed than gpt-6.1-sol baseline
     overnight-camping,"First overnight camping essentials include...",4,4,4,3,Solid advice, slightly less nuanced
     three-day-backpacking,"October mountain safety priorities...",4,4,4,4,Good safety guidance, concise
     winter-hiking,"Winter hiking requires additional gear...",4,4,4,3,Clear comparison, adequate detail
@@ -545,7 +545,7 @@ Determine if an alternate lower-cost model available in your region can maintain
     git tag experiment-2-alternate-model
     ```
 
-    > **Note**: Keep the model change in trail_guide_agent.py committed on this branch. When you switch back to main, the script will revert to GPT-5.1.
+    > **Note**: Keep the model change in trail_guide_agent.py committed on this branch. When you switch back to main, the script will revert to gpt-6.1-sol.
 
 ## Compare experiments and decide
 
@@ -588,7 +588,7 @@ Use the CSV files to compare experiments side-by-side.
 
 1. Make your decision based on the data:
 
-    **Winner: `optimized-concise` (v4 prompt with GPT-5.1)**
+    **Winner: `optimized-concise` (v4 prompt with gpt-6.1-sol)**
     
     Rationale:
     - Maintains or improves quality across test cases
